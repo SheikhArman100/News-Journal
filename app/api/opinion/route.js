@@ -54,3 +54,14 @@ export async function POST(request) {
     console.log(error);
   }
 }
+
+
+//get Opinions
+export async function GET() {
+  //connect mongodb
+  await connectMongo().catch((error) =>
+    NextResponse.json({ message: "Connection Failed...!" })
+  );
+  const resData = await Opinion.find();
+  return NextResponse.json(resData);
+}

@@ -57,3 +57,13 @@ export async function POST(request) {
     console.log(error);
   }
 }
+
+//get LifeStyle
+export async function GET() {
+  //connect mongodb
+  await connectMongo().catch((error) =>
+    NextResponse.json({ message: "Connection Failed...!" })
+  );
+  const resData = await Lifestyle.find();
+  return NextResponse.json(resData);
+}

@@ -1,8 +1,9 @@
 import News from "@/libs/mongodb/model/newsSchema";
-import connectMongo from "../../../libs/mongodb/connect"
+import connectMongo from "../../../libs/mongodb/connect";
 import puppeteer from "puppeteer";
-const baseUrl = process.env.URL1
-const url = process.env.URL1
+import { NextResponse } from "next/server";
+const baseUrl = process.env.URL1;
+const url = process.env.URL1;
 
 export async function POST(request) {
   try {
@@ -38,18 +39,28 @@ export async function POST(request) {
     }, baseUrl);
     await browser.close();
 
-
     //connect mongodb
-    await  connectMongo().catch(error => NextResponse.json({ message: "Connection Failed...!"}))
-   
+    await connectMongo().catch((error) =>
+      NextResponse.json({ message: "Connection Failed...!" })
+    );
+
     //delete previous data in mongodb
     await News.deleteMany({});
 
     //insert new data in mongodb
-     await News.create(newsData);
-     console.log("News Database Updated Successfully")
-   
+    await News.create(newsData);
+    console.log("News Database Updated Successfully");
   } catch (error) {
     console.log(error);
   }
+}
+
+//get News
+export async function GET() {
+  //connect mongodb
+  await connectMongo().catch((error) =>
+    NextResponse.json({ message: "Connection Failed...!" })
+  );
+  const resData = await News.find();
+  return NextResponse.json(resData);
 }
