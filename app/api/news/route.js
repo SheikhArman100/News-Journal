@@ -1,8 +1,8 @@
 import News from "@/libs/mongodb/model/newsSchema";
-import connectMongo from "../../../libs/mongodb/connect";
-import puppeteer from "puppeteer";
 import { NextResponse } from "next/server";
-const baseUrl = process.env.URL1;
+import puppeteer from "puppeteer";
+import connectMongo from "../../../libs/mongodb/connect";
+const baseUrl = process.env.URL;
 const url = process.env.URL1;
 
 export async function POST(request) {
@@ -13,7 +13,7 @@ export async function POST(request) {
 
     const newsData = await page.evaluate((baseUrl) => {
       const headlinesColumns = document.querySelectorAll(
-        ".pane-home-top-v5 .pane-content .row .columns"
+        ".pane-category-news .pane-content .row .columns"
       );
       const headlineCards = Array.from(headlinesColumns).map(
         (headlinesColumn) => {
@@ -26,9 +26,9 @@ export async function POST(request) {
                 .querySelector(".card-content .title a")
                 .getAttribute("href"),
             image:
-              headline
-                .querySelector(".card-image img")
-                ?.getAttribute("data-srcset") ?? "",
+              (headline.querySelector(".card-image img")?.getAttribute("data-srcset") || "")
+          .replace(/\.jpg\s.*$/, ".jpg") //remove text after .jpg like 470w
+          .replace(/\/medium_203\//, "/very_big_1/")//this will give me big image
           }));
           return headlinesData;
         }

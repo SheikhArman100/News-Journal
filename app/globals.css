@@ -11,7 +11,7 @@
     @apply overflow-x-hidden  focus-within:scroll-smooth;
   }
   body {
-    @apply w-screen min-h-screen mx-auto bg-bgColor text-textColor;
+    @apply w-screen min-h-screen max-w-[1440px]  mx-auto bg-bgColor text-textColor p-2 sm:p-4 lg:px-6 xl:px-8 flex flex-col
   }
   ul,
   ol {

@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={playfairDisplay.className}>
-        <main className='p-2 sm:p-4 lg:px-6 xl:px-8'>
+        <main className=''>
           <Navbar/>
           {children}
         </main>

@@ -1,9 +1,9 @@
-
-import connectMongo from "../../../libs/mongodb/connect"
-import puppeteer from "puppeteer";
 import Opinion from "@/libs/mongodb/model/opinionSchema";
-const baseUrl = process.env.URL1
-const url = process.env.URL2
+import { NextResponse } from "next/server";
+import puppeteer from "puppeteer";
+import connectMongo from "../../../libs/mongodb/connect";
+const baseUrl = process.env.URL;
+const url = process.env.URL2;
 
 export async function POST(request) {
   try {
@@ -25,10 +25,12 @@ export async function POST(request) {
               headline
                 .querySelector(".card-content .title a")
                 .getAttribute("href"),
-            image:
-              headline
-                .querySelector(".card-image img")
-                ?.getAttribute("data-srcset") ?? "",
+            image:(headline.querySelector(".card-image img")?.getAttribute("data-srcset") || "")
+          .replace(/\.jpg\s.*$/, ".jpg") //remove text after .jpg like 470w
+          .replace(/\.png\s.*$/, ".png") //remove text after .png like 470w
+          .replace(/\/medium_203\//, "/very_big_1/")//this will give me big image
+          .replace(/\/medium_201\//, "/very_big_1/")//this will give me big image
+          .replace(/\/small_202\//, "/very_big_1/")//this will give me big image
           }));
           return headlinesData;
         }
@@ -39,22 +41,21 @@ export async function POST(request) {
     }, baseUrl);
     await browser.close();
 
-
     //connect mongodb
-    await  connectMongo().catch(error => NextResponse.json({ message: "Connection Failed...!"}))
-   
+    await connectMongo().catch((error) =>
+      NextResponse.json({ message: "Connection Failed...!" })
+    );
+
     //delete previous data in mongodb
     await Opinion.deleteMany({});
 
     //insert new data in mongodb
-     await Opinion.create(newsData);
-     console.log("Opinions Database Updated Successfully")
-   
+    await Opinion.create(newsData);
+    console.log("Opinions Database Updated Successfully");
   } catch (error) {
     console.log(error);
   }
 }
-
 
 //get Opinions
 export async function GET() {
