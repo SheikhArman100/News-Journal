@@ -5,20 +5,24 @@ import React from "react";
 import { BsShare } from "react-icons/bs";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import NewsCard from "@/components/NewsCard";
-import SportsAcc from "@/components/SportsAcc";
+import SportsAcc from "@/components/SportsAcc/SportsAcc";
 import OpinionAcc from "@/components/OpinionAcc/OpinionAcc";
-import CultureAcc from "@/components/CultureAcc";
-import LifestyleAcc from "@/components/LifestyleAcc";
-import OpinionContainer from "@/components/OpinionAcc/OpinionContainer";
+import CultureAcc from "@/components/CultureAcc/CultureAcc";
 
-const minutes = getRandomNumber();
+import OpinionContainer from "@/components/OpinionAcc/OpinionContainer";
+import CultureContainer from "@/components/CultureAcc/CultureContainer";
+import LifestyleAcc from "@/components/LifestyleAcc/LifestyleAcc";
+import LifestyleContainer from "@/components/LifestyleAcc/LifestyleContainer";
+import SportsContainer from "@/components/SportsAcc/SportsContainer";
+
+
 
 const News = () => {
   return (
     <div>
       <Headline />
       <NewsContainer />
-      <Accorden/>
+      <Accordion/>
 
     </div>
   );
@@ -28,6 +32,7 @@ const News = () => {
 
 const Headline = async () => {
   const headline = await getHeadline();
+  const minutes = getRandomNumber();
 
   //console.log(headline);
 
@@ -42,15 +47,17 @@ const Headline = async () => {
         <p>Latest</p>
       </div>
       <div className="w-full grid grid-cols-1 ">
-        <Image
+       <div className="w-full aspect-[16/12] sm:aspect-[16/10] md:aspect-[16/8] lg:aspect-[16/7]  mt-4 p-2 border-2 md:border-4 border-black">
+         <Image
           alt="Headline cover"
           height={773}
           width={1400}
           src={headline[0].image}
-          className="w-full aspect-[16/12] sm:aspect-[16/10] md:aspect-[16/8] lg:aspect-[16/7] object-fit mt-4"
+          className="object-fit w-full h-full"
           sizes="(min-width: 1520px) 1376px, 91vw"
           priority
         />
+       </div>
         <div className="mt-2 flex items-center justify-between px-1">
           <span className="text-xs md:text-sm px-2 py-1 bg-accentColor text-white rounded-full">
             Top News
@@ -86,70 +93,56 @@ const NewsContainer = async () => {
   const newsWithImage = news.filter((newsItem) => newsItem.image !== "");
 
   return (
-    <div className="relative w-full">
-    <div className="  flex flex-col-reverse gap-y-2 md:flex-row md:gap-x-4 ">
-      <div className="flex flex-col gap-y-2 md:w-[50%] py-2 md:py-4 ">
-        <NewsCard
-          title={newsWithImage[0].title}
-          link={newsWithImage[0].link}
-          image={newsWithImage[0].image}
-          cardStyle="w-full h-full flex"
-          imageStyle="w-[50%] "
-          
-        />
-        <NewsCard
-          title={newsWithImage[1].title}
-          link={newsWithImage[1].link}
-          image={newsWithImage[1].image}
-          cardStyle="w-full h-full flex"
-          imageStyle="w-[50%]"
-        />
+    <div className="mt-4 w-full flex flex-col md:flex-row md:gap-x-2">
+      <div className="md:flex-1 md:mt-2 flex flex-col gap-y-2">
+        {
+          [0,1].map((number,index)=>
+           <NewsCard key={index}>
+              <NewsCard.Container style="flex justify-between md:flex-col gap-x-3">
+                <NewsCard.Photo image={newsWithImage[number].image} style="w-[50%] md:w-full"/>
+                <NewsCard.Info>
+                  <NewsCard.Title title={newsWithImage[number].title} link={newsWithImage[number].link}/>
+                  <NewsCard.Details/>
+                </NewsCard.Info>
+
+              </NewsCard.Container>
+
+            </NewsCard>
+          )
+        }
+
       </div>
-      <div className="grid grid-cols-2 grid-rows-4 gap-2 md:w-[50%] md:flex md:flex-col py-2 md:py-4  ">
-        <NewsCard
-          title={newsWithImage[2].title}
-          link={newsWithImage[2].link}
-          image={newsWithImage[2].image}
-          cardStyle="col-span-1 row-span-2 md:h-[25%] w-full md:flex md:gap-x-1 md:gap-x-3"
-          imageStyle="md:w-[50%]"
-        />
-        <NewsCard
-          title={newsWithImage[3].title}
-          link={newsWithImage[3].link}
-          image={newsWithImage[3].image}
-          cardStyle="col-span-1 row-span-2 md:h-[25%] w-full md:flex md:gap-x-1 md:gap-x-3"
-          imageStyle="md:w-[50%]"
-        />
-        <NewsCard
-          title={newsWithImage[4].title}
-          link={newsWithImage[4].link}
-          image={newsWithImage[4].image}
-          cardStyle="col-span-1 row-span-2 md:h-[25%] w-full md:flex md:gap-x-1 md:gap-x-3"
-          imageStyle="md:w-[50%]"
-        />
-        <NewsCard
-          title={newsWithImage[5].title}
-          link={newsWithImage[5].link}
-          image={newsWithImage[5].image}
-          cardStyle="col-span-1 row-span-2 md:h-[25%] w-full md:flex md:gap-x-1 md:gap-x-3"
-          imageStyle="md:w-[50%]"
-        />
+      <div className="md:flex-1 mt-2 w-full grid grid-cols-2  gap-2">
+         {
+          [2,3,4,5].map((number,index)=>
+           <NewsCard key={index}>
+              <NewsCard.Container style="col-span-1 md:col-span-2 flex flex-col md:flex-row md:gap-x-3  md:gap-y-0 gap-y-1  ">
+                <NewsCard.Photo image={newsWithImage[number].image} style="w-full md:w-[40%] aspect-video  md:aspect-[16/6] "/>
+                <NewsCard.Info>
+                  <NewsCard.Title title={newsWithImage[number].title} link={newsWithImage[number].link}/>
+                  <NewsCard.Details/>
+                </NewsCard.Info>
+
+              </NewsCard.Container>
+
+            </NewsCard>
+          )
+        }
+
       </div>
-      </div>
-      <div className="col-span-2 mt-4 flex items-center justify-center ">
-        <Link href="" className="py-2 px-4 border border-black hover:text-white hover:bg-black rounded-full">More News</Link>
-      </div>
+      
+    
     </div>
   );
 };
 
-const Accorden=()=>{
+const Accordion=()=>{
   return (
     <div className="flex flex-col mt-6">
       <OpinionAcc><OpinionContainer/></OpinionAcc>
-      <SportsAcc/>
-      <CultureAcc/>
-      <LifestyleAcc/>
+      <SportsAcc><SportsContainer/></SportsAcc>
+      <CultureAcc><CultureContainer/></CultureAcc>
+      <LifestyleAcc><LifestyleContainer/></LifestyleAcc>
 
     </div>
   )

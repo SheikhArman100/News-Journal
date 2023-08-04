@@ -25,10 +25,16 @@ export async function POST(request) {
               headline
                 .querySelector(".card-content .title a")
                 .getAttribute("href"),
-            image:
-              (headline.querySelector(".card-image img")?.getAttribute("data-srcset") || "")
-          .replace(/\.jpg\s.*$/, ".jpg") //remove text after .jpg like 470w
-          .replace(/\/medium_203\//, "/very_big_1/")//this will give me big image
+            image: (
+              headline
+                .querySelector(".card-image img")
+                ?.getAttribute("data-srcset") || ""
+            )
+              .replace(/\.jpg\s.*$/, ".jpg") //remove text after .jpg like 470w
+              .replace(/\.png\s.*$/, ".png") //remove text after .png like 470w
+              .replace(/\/medium_203\//, "/very_big_1/") //this will give me big image
+              .replace(/\/medium_201\//, "/very_big_1/") //this will give me big image
+              .replace(/\/small_202\//, "/very_big_1/"), //this will give me big image
           }));
           return headlinesData;
         }

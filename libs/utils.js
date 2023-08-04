@@ -34,3 +34,39 @@ export const getOpinions = async () => {
   return opinions;
 };
 
+export const getCultures = async () => {
+  const data = await fetch(`${process.env.HOST_URL}/api/culture`, {
+    next: {
+      revalidate: 21600000,
+    },
+  });
+  const cultures = await data.json();
+
+  return cultures;
+};
+
+export const getLifestyles = async () => {
+  const data = await fetch(`${process.env.HOST_URL}/api/lifestyle`, {
+    next: {
+      revalidate: 21600000,
+    },
+  });
+  const lifestyles = await data.json();
+
+  return lifestyles;
+};
+
+export const getSports = async () => {
+  const data = await fetch(`${process.env.HOST_URL}/api/sports`, {
+    next: {
+      revalidate: 21600000,
+    },
+  });
+  const sports = await data.json();
+
+  return sports;
+};
+
+
+
+

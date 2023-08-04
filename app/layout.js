@@ -1,6 +1,7 @@
 import Navbar from '@/components/Navbar/Navbar'
 import './globals.css'
 import { Playfair_Display } from 'next/font/google'
+import Footer from '@/components/Footer'
 
 const playfairDisplay = Playfair_Display({ subsets: ['vietnamese'] })
 
@@ -13,9 +14,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={playfairDisplay.className}>
-        <main className=''>
+        <main className='w-screen min-h-screen max-w-[1440px]  mx-auto bg-bgColor text-textColor py-2 sm:py-4 px-4 lg:px-6 xl:px-8 flex flex-col'>
           <Navbar/>
           {children}
+          <Footer/>
         </main>
       </body>
     </html>
