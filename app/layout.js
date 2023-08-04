@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={playfairDisplay.className}>
-        <main className='w-screen min-h-screen max-w-[1440px]  mx-auto bg-bgColor text-textColor py-2 sm:py-4 px-4 lg:px-6 xl:px-8 flex flex-col'>
+        <main className=''>
           <Navbar/>
           {children}
           <Footer/>

@@ -15,15 +15,12 @@ import LifestyleAcc from "@/components/LifestyleAcc/LifestyleAcc";
 import LifestyleContainer from "@/components/LifestyleAcc/LifestyleContainer";
 import SportsContainer from "@/components/SportsAcc/SportsContainer";
 
-
-
 const News = () => {
   return (
     <div>
       <Headline />
       <NewsContainer />
-      <Accordion/>
-
+      <Accordion />
     </div>
   );
 };
@@ -47,17 +44,17 @@ const Headline = async () => {
         <p>Latest</p>
       </div>
       <div className="w-full grid grid-cols-1 ">
-       <div className="w-full aspect-[16/12] sm:aspect-[16/10] md:aspect-[16/8] lg:aspect-[16/7]  mt-4 p-2 border-2 md:border-4 border-black">
-         <Image
-          alt="Headline cover"
-          height={773}
-          width={1400}
-          src={headline[0].image}
-          className="object-fit w-full h-full"
-          sizes="(min-width: 1520px) 1376px, 91vw"
-          priority
-        />
-       </div>
+        <div className="w-full aspect-[16/12] sm:aspect-[16/10] md:aspect-[16/8] lg:aspect-[16/7]  mt-4 p-2 border-2 md:border-4 border-black">
+          <Image
+            alt="Headline cover"
+            height={773}
+            width={1400}
+            src={headline[0].image}
+            className="object-fit w-full h-full"
+            sizes="(min-width: 1520px) 1376px, 91vw"
+            priority
+          />
+        </div>
         <div className="mt-2 flex items-center justify-between px-1">
           <span className="text-xs md:text-sm px-2 py-1 bg-accentColor text-white rounded-full">
             Top News
@@ -93,59 +90,66 @@ const NewsContainer = async () => {
   const newsWithImage = news.filter((newsItem) => newsItem.image !== "");
 
   return (
-    <div className="mt-4 w-full flex flex-col md:flex-row md:gap-x-2">
+    <div className="mt-4 w-full flex flex-col md:flex-row md:gap-x-2 xl:gap-x-5">
       <div className="md:flex-1 md:mt-2 flex flex-col gap-y-2">
-        {
-          [0,1].map((number,index)=>
-           <NewsCard key={index}>
-              <NewsCard.Container style="flex justify-between md:flex-col gap-x-3">
-                <NewsCard.Photo image={newsWithImage[number].image} style="w-[50%] md:w-full"/>
-                <NewsCard.Info>
-                  <NewsCard.Title title={newsWithImage[number].title} link={newsWithImage[number].link}/>
-                  <NewsCard.Details/>
-                </NewsCard.Info>
-
-              </NewsCard.Container>
-
-            </NewsCard>
-          )
-        }
-
+        {[0, 1].map((number, index) => 
+          <NewsCard key={index}>
+            <NewsCard.Container style="flex justify-between md:flex-col gap-x-3">
+              <NewsCard.Photo
+                image={newsWithImage[number].image}
+                style="w-[40%] md:w-full aspect-[16/10] sm:aspect-[16/7] md:aspect-[16/8] xl:aspect-[16/7]"
+              />
+              <NewsCard.Info>
+                <NewsCard.Title
+                  title={newsWithImage[number].title}
+                  link={newsWithImage[number].link}
+                />
+                <NewsCard.Details />
+              </NewsCard.Info>
+            </NewsCard.Container>
+          </NewsCard>
+        )}
       </div>
       <div className="md:flex-1 mt-2 w-full grid grid-cols-2  gap-2">
-         {
-          [2,3,4,5].map((number,index)=>
-           <NewsCard key={index}>
-              <NewsCard.Container style="col-span-1 md:col-span-2 flex flex-col md:flex-row md:gap-x-3  md:gap-y-0 gap-y-1  ">
-                <NewsCard.Photo image={newsWithImage[number].image} style="w-full md:w-[40%] aspect-video  md:aspect-[16/6] "/>
-                <NewsCard.Info>
-                  <NewsCard.Title title={newsWithImage[number].title} link={newsWithImage[number].link}/>
-                  <NewsCard.Details/>
-                </NewsCard.Info>
-
-              </NewsCard.Container>
-
-            </NewsCard>
-          )
-        }
-
+        {[2, 3, 4, 5].map((number, index) => (
+          <NewsCard key={index}>
+            <NewsCard.Container style="col-span-1 md:col-span-2 flex flex-col md:flex-row md:gap-x-3  md:gap-y-0 gap-y-1  ">
+              <NewsCard.Photo
+                image={newsWithImage[number].image}
+                style="w-full md:w-[40%] aspect-[16/10]  md:aspect-[16/6] "
+              />
+              <NewsCard.Info>
+                <NewsCard.Title
+                  title={newsWithImage[number].title}
+                  link={newsWithImage[number].link}
+                />
+                <NewsCard.Details />
+              </NewsCard.Info>
+            </NewsCard.Container>
+          </NewsCard>
+        ))}
       </div>
-      
-    
     </div>
   );
 };
 
-const Accordion=()=>{
+const Accordion = () => {
   return (
     <div className="flex flex-col mt-6">
-      <OpinionAcc><OpinionContainer/></OpinionAcc>
-      <SportsAcc><SportsContainer/></SportsAcc>
-      <CultureAcc><CultureContainer/></CultureAcc>
-      <LifestyleAcc><LifestyleContainer/></LifestyleAcc>
-
+      <OpinionAcc>
+        <OpinionContainer />
+      </OpinionAcc>
+      <SportsAcc>
+        <SportsContainer />
+      </SportsAcc>
+      <CultureAcc>
+        <CultureContainer />
+      </CultureAcc>
+      <LifestyleAcc>
+        <LifestyleContainer />
+      </LifestyleAcc>
     </div>
-  )
-}
+  );
+};
 
 export default News;
