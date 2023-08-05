@@ -87,7 +87,7 @@ const Headline = async () => {
 
 const NewsContainer = async () => {
   const news = await getNews();
-  const newsWithImage = news.filter((newsItem) => newsItem.image !== "");
+  const newsWithImage = news.filter((newsItem) => newsItem.image !== "" );
 
   return (
     <div className="mt-4 w-full flex flex-col md:flex-row md:gap-x-2 xl:gap-x-5">

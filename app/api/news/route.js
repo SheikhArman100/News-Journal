@@ -32,6 +32,7 @@ export async function POST(request) {
             )
               .replace(/\.jpg\s.*$/, ".jpg") //remove text after .jpg like 470w
               .replace(/\.png\s.*$/, ".png") //remove text after .png like 470w
+              .replace(/\.gif\s.*$/, ".gif") //remove text after .png like 470w
               .replace(/\/medium_203\//, "/very_big_1/") //this will give me big image
               .replace(/\/medium_201\//, "/very_big_1/") //this will give me big image
               .replace(/\/small_202\//, "/very_big_1/"), //this will give me big image
