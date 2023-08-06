@@ -64,5 +64,6 @@ export async function GET() {
     NextResponse.json({ message: "Connection Failed...!" })
   );
   const resData = await Opinion.find();
-  return NextResponse.json({resData});
+  const opinion=resData.json()
+  return NextResponse.json(opinion);
 }

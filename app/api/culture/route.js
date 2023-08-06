@@ -70,5 +70,7 @@ export async function GET() {
     NextResponse.json({ message: "Connection Failed...!" })
   );
   const resData = await Culture.find();
-  return NextResponse.json({resData});
+  const culture=resData.json()
+
+  return NextResponse.json(culture);
 }

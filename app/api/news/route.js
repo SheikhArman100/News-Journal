@@ -69,5 +69,6 @@ export async function GET() {
     NextResponse.json({ message: "Connection Failed...!" })
   );
   const resData = await News.find();
-  return NextResponse.json({resData});
+  const news=resData.json()
+  return NextResponse.json(news);
 }
