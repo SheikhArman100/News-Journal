@@ -46,5 +46,5 @@ export async function GET() {
     NextResponse.json({ message: "Connection Failed...!" })
   );
   const resData = await Headline.find();
-  return NextResponse.json(resData);
+  return NextResponse.json({resData});
 }
