@@ -65,10 +65,9 @@ export async function POST(request) {
 //get News
 export async function GET() {
   //connect mongodb
-  connectMongo().catch((error) =>
+  await connectMongo().catch((error) =>
     NextResponse.json({ message: "Connection Failed...!" })
   );
   const resData = await News.find();
-  const news=resData.json()
-  return NextResponse.json(news);
+  return NextResponse.json(resData);
 }

@@ -60,10 +60,9 @@ export async function POST(request) {
 //get Opinions
 export async function GET() {
   //connect mongodb
-  connectMongo().catch((error) =>
+  await connectMongo().catch((error) =>
     NextResponse.json({ message: "Connection Failed...!" })
   );
   const resData = await Opinion.find();
-  const opinion=resData.json()
-  return NextResponse.json(opinion);
+  return NextResponse.json(resData);
 }

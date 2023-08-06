@@ -64,10 +64,9 @@ export async function POST(request) {
 //get LifeStyle
 export async function GET() {
   //connect mongodb
-  connectMongo().catch((error) =>
+  await connectMongo().catch((error) =>
     NextResponse.json({ message: "Connection Failed...!" })
   );
   const resData = await Lifestyle.find();
-  const lifestyle=resData.json()
-  return NextResponse.json(lifestyle);
+  return NextResponse.json(resData);
 }

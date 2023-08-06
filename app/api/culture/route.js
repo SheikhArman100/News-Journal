@@ -66,11 +66,9 @@ export async function POST(request) {
 //get Culture
 export async function GET() {
   //connect mongodb
-  connectMongo().catch((error) =>
+  await connectMongo().catch((error) =>
     NextResponse.json({ message: "Connection Failed...!" })
   );
   const resData = await Culture.find();
-  const culture=resData.json()
-
-  return NextResponse.json(culture);
+  return NextResponse.json(resData);
 }
