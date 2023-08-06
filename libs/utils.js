@@ -9,9 +9,10 @@ export const getHeadline = async () => {
         revalidate: 21600000,
       },
     });
-    //const headline = await data.json();
+    const headline = await data.json();
+    console.log(headline)
 
-    return data
+    return headline;
   } catch (error) {
     console.log(error);
   }
@@ -23,9 +24,9 @@ export const getNews = async () => {
         revalidate: 21600000,
       },
     });
-    //const news = await data.json();
+    const news = await data.json();
 
-    return data;
+    return news;
   } catch (error) {
     console.log(error);
   }
@@ -38,9 +39,9 @@ export const getOpinions = async () => {
         revalidate: 21600000,
       },
     });
-    //const opinions = await data.json();
+    const opinions = await data.json();
 
-    return data;
+    return opinions;
   } catch (error) {
     console.log(error);
   }
@@ -53,9 +54,9 @@ export const getCultures = async () => {
         revalidate: 21600000,
       },
     });
-    //const cultures = await data.json();
+    const cultures = await data.json();
 
-    return data;
+    return cultures;
   } catch (error) {
     console.log(error);
   }
@@ -68,9 +69,9 @@ export const getLifestyles = async () => {
         revalidate: 21600000,
       },
     });
-    //const lifestyles = await data.json();
+    const lifestyles = await data.json();
 
-    return data;
+    return lifestyles;
   } catch (error) {
     console.log(error);
   }
@@ -83,9 +84,9 @@ export const getSports = async () => {
         revalidate: 21600000,
       },
     });
-    //const sports = await data.json();
+    const sports = await data.json();
 
-    return data;
+    return sports;
   } catch (error) {
     console.log(error);
   }
