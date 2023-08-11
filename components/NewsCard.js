@@ -27,7 +27,9 @@ const Photo = ({ style, image }) => {
       width={700}
       src={image}
       alt="cardImage"
-      className={`flex-1 object-fit rounded-md shadow-md ${style}`}
+      priority
+      
+      className={`flex-1 object-fit rounded-md shadow-md bg-slate-500 ${style}`}
     />
   );
 };
