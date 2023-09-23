@@ -6,7 +6,7 @@ export const getHeadline = async () => {
   try {
     const data = await fetch(`${process.env.HOST_URL}/api/headline`, {
       next: {
-        revalidate: 3600,
+        revalidate: 600,
       },
     });
     const headline = await data.json();
@@ -20,7 +20,7 @@ export const getNews = async () => {
   try {
     const data = await fetch(`${process.env.HOST_URL}/api/news`, {
       next: {
-        revalidate: 3600,
+        revalidate: 600,
       },
     });
     const news = await data.json();
@@ -35,7 +35,7 @@ export const getOpinions = async () => {
   try {
     const data = await fetch(`${process.env.HOST_URL}/api/opinion`, {
       next: {
-        revalidate: 3600,
+        revalidate: 600,
       },
     });
     const opinions = await data.json();
@@ -50,7 +50,7 @@ export const getCultures = async () => {
   try {
     const data = await fetch(`${process.env.HOST_URL}/api/culture`, {
       next: {
-        revalidate: 3600,
+        revalidate: 600,
       },
     });
     const cultures = await data.json();
@@ -65,7 +65,7 @@ export const getLifestyles = async () => {
   try {
     const data = await fetch(`${process.env.HOST_URL}/api/lifestyle`, {
       next: {
-        revalidate: 3600,
+        revalidate: 600,
       },
     });
     const lifestyles = await data.json();
@@ -80,7 +80,7 @@ export const getSports = async () => {
   try {
     const data = await fetch(`${process.env.HOST_URL}/api/sports`, {
       next: {
-        revalidate: 3600,
+        revalidate: 600,
       },
     });
     const sports = await data.json();

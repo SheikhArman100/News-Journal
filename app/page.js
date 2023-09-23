@@ -1,5 +1,4 @@
 import { getHeadline, getNews, getRandomNumber } from "@/libs/utils";
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { BsShare } from "react-icons/bs";
@@ -14,6 +13,7 @@ import CultureContainer from "@/components/CultureAcc/CultureContainer";
 import LifestyleAcc from "@/components/LifestyleAcc/LifestyleAcc";
 import LifestyleContainer from "@/components/LifestyleAcc/LifestyleContainer";
 import SportsContainer from "@/components/SportsAcc/SportsContainer";
+import RemoteImage from "@/components/RemoteImage";
 
 const News = () => {
   return (
@@ -44,13 +44,10 @@ const Headline = async () => {
         <p>Latest</p>
       </div>
       <div className="w-full grid grid-cols-1 ">
-        <div className="w-full aspect-[16/12] sm:aspect-[16/10] md:aspect-[16/8] lg:aspect-[16/7]  mt-4 p-2 border-2 md:border-4 border-black">
-          <Image
+        <div className="relative w-full aspect-[16/12] sm:aspect-[16/10] md:aspect-[16/8] lg:aspect-[16/7]  mt-4 p-2 border-2 md:border-4 border-black">
+          <RemoteImage
             alt="Headline cover"
-            height={773}
-            width={1400}
             src={headline[0].image}
-            className="object-fit w-full h-full"
             sizes="(min-width: 1520px) 1376px, 91vw"
             priority
           />

@@ -3,6 +3,8 @@ import { BsShare } from "react-icons/bs";
 import React from "react";
 import Link from "next/link";
 import { getRandomNumber } from "@/libs/utils";
+import { twMerge } from "tailwind-merge";
+import RemoteImage from "./RemoteImage";
 
 const NewsCard = ({ children }) => {
   return React.Children.map(children, (child) => {
@@ -22,32 +24,24 @@ const Container = ({ children, style }) => {
 
 const Photo = ({ style, image }) => {
   return (
-    <Image
-      height={335}
-      width={700}
-      src={image}
-      alt="cardImage"
-      priority
-      
-      className={`flex-1 object-fit rounded-md shadow-md bg-slate-500 ${style}`}
-    />
+    <div className={twMerge("relative rounded-md shadow-md", style)}>
+      <RemoteImage alt="cardImage" src={image} sizes="(min-width: 1520px) 652px, (min-width: 780px) 42.78vw, calc(39.35vw - 18px)" className="" />
+    </div>
   );
 };
 
 const Info = ({ children }) => {
   return (
-    <div className="flex-1 flex flex-col items-start  py-2  ">
-      {children}
-    </div>
+    <div className="flex-1 flex flex-col items-start  py-2  ">{children}</div>
   );
 };
 const Title = ({ title, link, style }) => {
   return (
     <Link href={link}>
       <h5
-        className={`text-sm lg:text-base font-semibold line-clamp-3 hover:text-blue-800 ${style}`}
+        className={twMerge("text-sm lg:text-base font-semibold line-clamp-3 hover:text-blue-800", style)}
       >
-       {title}
+        {title}
       </h5>
     </Link>
   );
