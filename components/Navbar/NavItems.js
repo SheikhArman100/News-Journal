@@ -9,19 +9,19 @@ const navItems = [
   },
   {
     title: "Opinion",
-    href: "/Opinion",
+    href: "/opinion",
   },
   {
     title: "Sport",
-    href: "/Sport",
+    href: "/sport",
   },
   {
     title: "Culture",
-    href: "/Culture",
+    href: "/culture",
   },
   {
     title: "Lifestyle",
-    href: "/Lifestyle",
+    href: "/lifestyle",
   },
 ];
 

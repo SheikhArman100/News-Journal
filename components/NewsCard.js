@@ -15,8 +15,7 @@ const NewsCard = ({ children }) => {
 const Container = ({ children, style }) => {
   return (
     <div
-      className={` p-2 sm:p-3 border border-transparent  transition duration-300 ease-in shadow-lg hover:border-black rounded hover:shadow-[5px_5px_0px_0px_rgba(37,40,39)]  ${style}`}
-    >
+      className={twMerge("p-2 sm:p-3 border border-transparent  transition duration-300 ease-in shadow-lg hover:border-black rounded hover:shadow-[5px_5px_0px_0px_rgba(37,40,39)]",style)} >
       {children}
     </div>
   );
@@ -24,15 +23,15 @@ const Container = ({ children, style }) => {
 
 const Photo = ({ style, image }) => {
   return (
-    <div className={twMerge("relative rounded-md shadow-md", style)}>
-      <RemoteImage alt="cardImage" src={image} sizes="(min-width: 1520px) 652px, (min-width: 780px) 42.78vw, calc(39.35vw - 18px)" className="" />
+    <div className={twMerge("relative rounded-md shadow-md ", style)}>
+      <RemoteImage alt="cardImage" src={image} sizes="(min-width: 1520px) 652px, (min-width: 780px) 42.78vw, calc(39.35vw - 18px)" className="rounded" />
     </div>
   );
 };
 
-const Info = ({ children }) => {
+const Info = ({ children,style }) => {
   return (
-    <div className="flex-1 flex flex-col items-start  py-2  ">{children}</div>
+    <div className={twMerge("flex-1 flex flex-col items-start  py-2 ",style)}>{children}</div>
   );
 };
 const Title = ({ title, link, style }) => {

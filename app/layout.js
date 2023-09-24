@@ -16,8 +16,10 @@ export default function RootLayout({ children }) {
       <body className={playfairDisplay.className}>
         <main className=''>
           <Navbar/>
-          {children}
-          <Footer/>
+          <div>
+            {children}
+            <Footer/>
+          </div>
         </main>
       </body>
     </html>
