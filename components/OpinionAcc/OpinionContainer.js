@@ -3,9 +3,8 @@ import React from 'react'
 import NewsCard from '../NewsCard'
 import Link from 'next/link'
 const OpinionContainer =async () => {
-    const opinions=await getOpinions()
-    const opinionsWithImage=opinions.filter((opinion)=>opinion.image !=="")
-    //console.log(opinionsWithImage)
+    const opinionsWithImage=await getOpinions()
+    
 
   return (
     <div className=' h-full py-2   '>

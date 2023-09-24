@@ -4,8 +4,8 @@ import NewsCard from '../NewsCard'
 import Link from 'next/link'
 
 const SportsContainer =async () => {
-  const sports=await getSports()
-    const sportsWithImage=sports.filter((sport)=>sport.image !=="")
+  const sportsWithImage=await getSports()
+   
   return (
     <section className='w-full h-full py-2 '>
       <div className='flex flex-col md:grid md:grid-cols-3 md:gap-x-2 lg:gap-x-4 md:gap-y-4 gap-y-2'>

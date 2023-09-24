@@ -4,8 +4,8 @@ import NewsCard from "../NewsCard";
 import Link from "next/link";
 
 const CultureContainer = async () => {
-  const cultures = await getCultures();
-  const culturesWithImage = cultures.filter((culture) => culture.image !== "");
+  const culturesWithImage = await getCultures();
+  
 
   return (
     <section className="h-full  py-2  ">

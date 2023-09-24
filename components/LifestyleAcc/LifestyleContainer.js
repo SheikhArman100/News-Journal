@@ -4,10 +4,8 @@ import NewsCard from "../NewsCard";
 import Link from "next/link";
 
 const LifestyleContainer = async () => {
-  const lifestyles = await getLifestyles();
-  const lifestylesWithImage = lifestyles.filter(
-    (lifestyle) => lifestyle.image !== ""
-  );
+  const lifestylesWithImage = await getLifestyles();
+  
 
   return (
     <section className="h-full py-2  ">
