@@ -31,9 +31,9 @@ export const getNews = async () => {
   }
 };
 
-export const getOpinions = async () => {
+export const getOpinions = async (page=1,limit=8) => {
   try {
-    const data = await fetch(`${process.env.HOST_URL}/api/opinion`, {
+    const data = await fetch(`${process.env.HOST_URL}/api/opinion?page=${page}&limit=${limit}`, {
       next: {
         revalidate: 600,
       },
@@ -46,9 +46,9 @@ export const getOpinions = async () => {
   }
 };
 
-export const getCultures = async () => {
+export const getCultures = async (page=1,limit=8) => {
   try {
-    const data = await fetch(`${process.env.HOST_URL}/api/culture`, {
+    const data = await fetch(`${process.env.HOST_URL}/api/culture?page=${page}&limit=${limit}`, {
       next: {
         revalidate: 600,
       },
@@ -61,9 +61,9 @@ export const getCultures = async () => {
   }
 };
 
-export const getLifestyles = async () => {
+export const getLifestyles = async (page=1,limit=8) => {
   try {
-    const data = await fetch(`${process.env.HOST_URL}/api/lifestyle`, {
+    const data = await fetch(`${process.env.HOST_URL}/api/lifestyle?page=${page}&limit=${limit}`, {
       next: {
         revalidate: 600,
       },
@@ -76,9 +76,9 @@ export const getLifestyles = async () => {
   }
 };
 
-export const getSports = async () => {
+export const getSports = async (page=1,limit=8) => {
   try {
-    const data = await fetch(`${process.env.HOST_URL}/api/sports`, {
+    const data = await fetch(`${process.env.HOST_URL}/api/sports?page=${page}&limit=${limit}`, {
       next: {
         revalidate: 600,
       },
