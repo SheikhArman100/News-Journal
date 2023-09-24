@@ -15,8 +15,8 @@ const Sport = async() => {
             return(
               <NewsCard key={index} >
               <NewsCard.Container style="flex h-full gap-x-2 w-full aspect-[3/1]">
-                <NewsCard.Photo image={sport.image} style="w-1/2 "/>
-                <NewsCard.Info>
+                <NewsCard.Photo image={sport.image} style="w-1/2 h-full  "/>
+                <NewsCard.Info style='w-1/2 h-full'>
                   <NewsCard.Title title={sport.title} link={sport.link} />
                   <NewsCard.Details/>
                 </NewsCard.Info>
