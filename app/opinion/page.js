@@ -1,7 +1,8 @@
 import NewsCard from "@/components/NewsCard";
 import { getOpinions } from "@/libs/utils";
 import Link from "next/link";
-import React from "react";
+import React, { Suspense } from "react";
+import OpinionSkeleton from "./OpinionSkeleton";
 
 const Opinion = async ({ searchParams }) => {
   const page = Number(searchParams.page) || 1;
@@ -14,7 +15,7 @@ const Opinion = async ({ searchParams }) => {
 
       {opinions.length===0?<div className="w-full h-screen flex items-center justify-center">
           <p className="text-base md:text-lg font-semibold text-gray-500">No news found</p>
-        </div>:<div className=" grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 lg:gap-6 mt-3 md:mt-6">
+        </div>:<Suspense fallback={<OpinionSkeleton/>}><div className=" grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 lg:gap-6 mt-3 md:mt-6">
         {opinions.map((opinion, index) => {
           return (
             <NewsCard key={index}>
@@ -35,7 +36,8 @@ const Opinion = async ({ searchParams }) => {
             </NewsCard>
           );
         })}
-      </div>}
+      </div>
+      </Suspense>}
       <div className="w-full  flex items-center justify-center gap-x-3 md:gap-x-6 mt-4 md:mt-8 ">
         <Link
           href={{

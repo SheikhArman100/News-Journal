@@ -55,7 +55,7 @@ const NavButton = () => {
           }`}
         >
           {navItems.map((data, index) => (
-            <li key={index}>
+            <li key={index} >
               <button
                 className={` text-4xl font-semiBold  ${
                   currentRoute === data.href

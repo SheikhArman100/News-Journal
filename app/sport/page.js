@@ -1,7 +1,8 @@
 import NewsCard from '@/components/NewsCard'
 import { getSports } from '@/libs/utils'
 import Link from 'next/link';
-import React from 'react'
+import React, { Suspense } from 'react'
+import SportSkeleton from './SportSkeleton';
 
 const Sport = async({ searchParams }) => {
   const page = Number(searchParams.page) || 1;
@@ -13,12 +14,12 @@ const Sport = async({ searchParams }) => {
 
       {sports.length===0?<div className="w-full h-screen flex items-center justify-center">
           <p className="text-base md:text-lg font-semibold text-gray-500">No news found</p>
-        </div>:<div className='grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 lg:gap-6 mt-3 md:mt-6'>
+        </div>:<Suspense fallback={<SportSkeleton/>}><div className='grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 lg:gap-6 mt-3 md:mt-6'>
          
           {sports.map((sport,index)=>{
             return(
               <NewsCard key={index} >
-              <NewsCard.Container style="flex h-full gap-x-2 w-full aspect-[3/1]">
+              <NewsCard.Container style="flex h-full gap-x-2 w-full aspect-[3/1.2]">
                 <NewsCard.Photo image={sport.image} style="w-1/2 h-full  "/>
                 <NewsCard.Info style='w-1/2 h-full'>
                   <NewsCard.Title title={sport.title} link={sport.link} />
@@ -33,7 +34,8 @@ const Sport = async({ searchParams }) => {
             
             
            
-         </div>}
+         </div>
+         </Suspense>}
          <div className="w-full  flex items-center justify-center gap-x-3 md:gap-x-6 mt-4 md:mt-8 ">
         <Link
           href={{

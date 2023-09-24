@@ -1,7 +1,9 @@
 import NewsCard from "@/components/NewsCard";
 import { getCultures } from "@/libs/utils";
 import Link from "next/link";
-import React from "react";
+import React, { Suspense } from "react";
+
+import CultureSkeleton from "./CultureSkeleton.js";
 
 const Culture = async ({ searchParams }) => {
   const page = Number(searchParams.page) || 1;
@@ -17,10 +19,12 @@ const Culture = async ({ searchParams }) => {
           <p className="text-base md:text-lg font-semibold text-gray-500">No news found</p>
         </div>
       ) : (
+        <Suspense fallback={<CultureSkeleton/>}>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-4 lg:gap-6 mt-3 md:mt-6">
           {cultures.map((culture, index) => {
             return (
-              <NewsCard key={index}>
+              
+                <NewsCard key={index}>
                 <NewsCard.Container style="flex flex-col flex-shrink-0 gap-y-1 col-span-1 aspect-[1.5/2] md:aspect-square h-full">
                   <NewsCard.Photo
                     image={culture.image}
@@ -32,9 +36,11 @@ const Culture = async ({ searchParams }) => {
                   </NewsCard.Info>
                 </NewsCard.Container>
               </NewsCard>
+              
             );
           })}
         </div>
+        </Suspense>
       )}
       <div className="w-full  flex items-center justify-center gap-x-3 md:gap-x-6 mt-4 md:mt-8 ">
         <Link
