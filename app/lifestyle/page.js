@@ -37,7 +37,7 @@ const Lifestyle = async({searchParams}) => {
            
          </div>
       }
-         <div className="w-full  flex items-center justify-center mt-4 md:mt-8 ">
+         <div className="w-full  flex items-center justify-center gap-x-3 md:gap-x-6 mt-4 md:mt-8 ">
         <Link
           href={{
             pathname: "/lifestyle",
@@ -46,7 +46,7 @@ const Lifestyle = async({searchParams}) => {
             },
           }}
           className={`py-2 px-6 bg-black text-white text-sm rounded border hover:border-black hover:bg-white hover:text-black font-semibold ${
-            page <= 1 ? "pointer-events-none opacity-50}" : ""
+            page <= 1 ? "pointer-events-none opacity-50" : ""
           }`}
         >
           Prev
@@ -58,7 +58,7 @@ const Lifestyle = async({searchParams}) => {
               page: page + 1,
             },
           }}
-          className="py-2 px-6 bg-black text-white text-sm rounded border hover:border-black hover:bg-white hover:text-black font-semibold"
+          className={`py-2 px-6 bg-black text-white text-sm rounded border hover:border-black hover:bg-white hover:text-black font-semibold ${lifestyles.length===0?"pointer-events-none opacity-50":""}`}
         >
           Next
         </Link>

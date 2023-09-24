@@ -2,7 +2,7 @@
 import React from "react";
 import { usePathname } from 'next/navigation';
 import Link from "next/link";
-const navItems = [
+export const navItems = [
   {
     title: "News",
     href: "/",
