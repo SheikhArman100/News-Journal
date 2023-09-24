@@ -1,5 +1,6 @@
 import NewsCard from '@/components/NewsCard'
 import { getOpinions } from '@/libs/utils'
+import Link from 'next/link'
 import React from 'react'
 
 const Opinion = async() => {
@@ -30,6 +31,7 @@ const Opinion = async() => {
             
            
          </div>
+         
 
 
     </section>

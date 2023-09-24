@@ -1,13 +1,15 @@
 import { getCultures } from "@/libs/utils";
 import React from "react";
 import NewsCard from "../NewsCard";
+import Link from "next/link";
 
 const CultureContainer = async () => {
   const cultures = await getCultures();
   const culturesWithImage = cultures.filter((culture) => culture.image !== "");
 
   return (
-    <section className="h-full  py-2 md:grid md:grid-cols-10 gap-x-2 ">
+    <section className="h-full  py-2  ">
+      <div className="md:grid md:grid-cols-10 gap-x-2">
       <div className="grid grid-cols-2  gap-x-2 gap-y-2 md:col-span-4">
         {[0, 1].map((number, index) => (
           <NewsCard key={index}>
@@ -83,6 +85,9 @@ const CultureContainer = async () => {
           </NewsCard.Container>
         </NewsCard>
       </div>
+      </div>
+      <div className='w-full flex items-center justify-center mt-4 '><Link href="/culture" className='py-2 px-4 text-sm rounded md:text-base bg-black text-white border hover:border-black hover:text-black hover:bg-white'>See more</Link></div>
+      
     </section>
   );
 };

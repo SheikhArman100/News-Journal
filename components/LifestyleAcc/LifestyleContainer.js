@@ -1,16 +1,20 @@
 import { getCultures, getLifestyles } from "@/libs/utils";
 import React from "react";
 import NewsCard from "../NewsCard";
+import Link from "next/link";
 
 const LifestyleContainer = async () => {
   const lifestyles = await getLifestyles();
-  const lifestylesWithImage = lifestyles.filter((lifestyle) => lifestyle.image !== "");
+  const lifestylesWithImage = lifestyles.filter(
+    (lifestyle) => lifestyle.image !== ""
+  );
 
   return (
-    <section className="h-full py-2 flex flex-col md:grid md:grid-cols-7 md:gap-x-2 gap-y-2 ">
-      <div className="grid grid-cols-2 md:col-span-5 md:grid-cols-7 md:grid-rows-10 gap-2 md:gap-3 md:mt-4">
-       {/* ----------------------0----------------------- */}
-       <NewsCard>
+    <section className="h-full py-2  ">
+      <div className="flex flex-col md:grid md:grid-cols-7 md:gap-x-2 gap-y-2">
+        <div className="grid grid-cols-2 md:col-span-5 md:grid-cols-7 md:grid-rows-10 gap-2 md:gap-3 md:mt-4">
+          {/* ----------------------0----------------------- */}
+          <NewsCard>
             <NewsCard.Container style="col-span-1 md:col-start-1 md:col-end-5 md:row-start-1 md:row-end-5 flex flex-col   gap-y-1  ">
               <NewsCard.Photo
                 image={lifestylesWithImage[0].image}
@@ -26,7 +30,7 @@ const LifestyleContainer = async () => {
             </NewsCard.Container>
           </NewsCard>
           {/* ----------------------1----------------------- */}
-       <NewsCard>
+          <NewsCard>
             <NewsCard.Container style="col-span-1 md:col-start-5 md:col-end-8 md:row-start-3 md:row-end-[7]  flex flex-col   gap-y-1  ">
               <NewsCard.Photo
                 image={lifestylesWithImage[1].image}
@@ -42,7 +46,7 @@ const LifestyleContainer = async () => {
             </NewsCard.Container>
           </NewsCard>
           {/* ----------------------2----------------------- */}
-       <NewsCard>
+          <NewsCard>
             <NewsCard.Container style="col-span-1 md:col-start-1 md:col-end-4 md:row-start-6 md:row-end-[10]  flex flex-col   gap-y-1  ">
               <NewsCard.Photo
                 image={lifestylesWithImage[2].image}
@@ -58,7 +62,7 @@ const LifestyleContainer = async () => {
             </NewsCard.Container>
           </NewsCard>
           {/* ----------------------3----------------------- */}
-       <NewsCard>
+          <NewsCard>
             <NewsCard.Container style="col-span-1  flex flex-col md:col-start-4 md:col-end-8 md:row-start-[7] md:row-end-[11]   gap-y-1  ">
               <NewsCard.Photo
                 image={lifestylesWithImage[3].image}
@@ -73,11 +77,9 @@ const LifestyleContainer = async () => {
               </NewsCard.Info>
             </NewsCard.Container>
           </NewsCard>
-
-
-      </div>
-      <div className="flex flex-col gap-y-2 md:col-span-2 md:grid md:grid-rows-10">
-         {/* --------------------------4------------------------------- */}
+        </div>
+        <div className="flex flex-col gap-y-2 md:col-span-2 md:grid md:grid-rows-10">
+          {/* --------------------------4------------------------------- */}
           <NewsCard>
             <NewsCard.Container style="col-span-1 flex md:flex-col md:row-start-1 md:row-end-6 gap-x-2  ">
               <NewsCard.Photo
@@ -109,10 +111,9 @@ const LifestyleContainer = async () => {
               </NewsCard.Info>
             </NewsCard.Container>
           </NewsCard>
-        
-
+        </div>
       </div>
-      
+      <div className='w-full flex items-center justify-center mt-4 '><Link href="/lifestyle" className='py-2 px-4 text-sm rounded md:text-base bg-black text-white border hover:border-black hover:text-black hover:bg-white'>See more</Link></div>
     </section>
   );
 };

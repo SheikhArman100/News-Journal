@@ -12,7 +12,7 @@ const navItems = [
     href: "/opinion",
   },
   {
-    title: "Sport",
+    title: "Sports",
     href: "/sport",
   },
   {

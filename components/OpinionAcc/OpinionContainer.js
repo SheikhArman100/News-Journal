@@ -1,14 +1,15 @@
 import { getOpinions } from '@/libs/utils'
 import React from 'react'
 import NewsCard from '../NewsCard'
+import Link from 'next/link'
 const OpinionContainer =async () => {
     const opinions=await getOpinions()
     const opinionsWithImage=opinions.filter((opinion)=>opinion.image !=="")
     //console.log(opinionsWithImage)
 
   return (
-    <div className=' h-full py-2 transition duration-500 '>
-         <div className='flex flex-col md:grid md:grid-cols-7 md:grid-rows-3 md:gap-x-3 gap-y-2'>
+    <div className=' h-full py-2   '>
+         <div className='flex flex-col md:grid md:grid-cols-7 md:grid-rows-3 md:gap-x-3 gap-y-2  '>
          
            <NewsCard >
               <NewsCard.Container style="flex flex-col-reverse gap-y-1 md:col-span-2 md:row-span-2 md:flex-col ">
@@ -46,6 +47,8 @@ const OpinionContainer =async () => {
             
            
          </div>
+         <div className='w-full flex items-center justify-center mt-4 '><Link href="/opinion" className='py-2 px-4 text-sm rounded md:text-base bg-black text-white border hover:border-black hover:text-black hover:bg-white'>See more</Link></div>
+         
          
 
     </div>

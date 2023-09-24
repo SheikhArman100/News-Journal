@@ -3,8 +3,8 @@ import React from 'react'
 
 const Loading = () => {
   return (
-    <div className='grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 lg:gap-6 mt-3 md:mt-6 py-4 md:py-8 px-4 md:px-[4rem] lg:px-[8rem]'>
-        {[...Array(20).keys()].map((i) => (
+    <div className='h-full w-full grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 lg:gap-6 mt-3 md:mt-6 py-4 md:py-8 px-4 md:px-[4rem] lg:px-[8rem]'>
+        {[...Array(10).keys()].map((i) => (
          <NewsCard key={i} >
               <NewsCard.Container style="w-full aspect-[2/2.1] h-full sm:aspect-[2/0.6] lg:aspect-[2/0.8] sm:flex sm:odd:flex-row-reverse sm:gap-x-2">
                 <div
