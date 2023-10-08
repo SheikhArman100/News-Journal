@@ -25,7 +25,7 @@ const Container = ({ children, style }) => {
   );
 };
 
-const Photo = ({ style, image }) => {
+const Photo = ({ style, image,className }) => {
   return (
     <div className={twMerge("relative rounded-md shadow-md ", style)}>
       <Image
