@@ -14,6 +14,7 @@ import LifestyleAcc from "@/components/LifestyleAcc/LifestyleAcc";
 import LifestyleContainer from "@/components/LifestyleAcc/LifestyleContainer";
 import SportsContainer from "@/components/SportsAcc/SportsContainer";
 import RemoteImage from "@/components/RemoteImage";
+import Image from "next/image";
 
 const News = () => {
   return (
@@ -31,7 +32,7 @@ const Headline = async () => {
   const headline = await getHeadline();
   const minutes = getRandomNumber();
 
-//  console.log(headline[0]);
+  //  console.log(headline[0]);
 
   return (
     <div className="mt-4 flex flex-col">
@@ -45,11 +46,14 @@ const Headline = async () => {
       </div>
       <div className="w-full grid grid-cols-1 ">
         <div className="relative w-full aspect-[16/12] sm:aspect-[16/10] md:aspect-[16/8] lg:aspect-[16/7]  mt-4 p-2 border-2 md:border-4 border-black">
-          <RemoteImage
+          <Image
             alt="Headline cover"
             src={headline[0].image}
             sizes="(min-width: 1520px) 1376px, 91vw"
-        
+            fill
+            className={twMerge("object-fit w-full h-full", className)}
+            placeholder="blur"
+            priority
           />
         </div>
         <div className="mt-2 flex items-center justify-between px-1">
@@ -84,12 +88,12 @@ const Headline = async () => {
 
 const NewsContainer = async () => {
   const news = await getNews();
-  const newsWithImage = news.filter((newsItem) => newsItem.image !== "" );
+  const newsWithImage = news.filter((newsItem) => newsItem.image !== "");
 
   return (
     <div className="mt-4 w-full flex flex-col md:flex-row md:gap-x-2 xl:gap-x-5">
       <div className="md:flex-1 md:mt-2 flex flex-col gap-y-2">
-        {[0, 1].map((number, index) => 
+        {[0, 1].map((number, index) => (
           <NewsCard key={index}>
             <NewsCard.Container style="flex justify-between md:flex-col gap-x-3">
               <NewsCard.Photo
@@ -105,7 +109,7 @@ const NewsContainer = async () => {
               </NewsCard.Info>
             </NewsCard.Container>
           </NewsCard>
-        )}
+        ))}
       </div>
       <div className="md:flex-1 mt-2 w-full grid grid-cols-2  gap-2">
         {[2, 3, 4, 5].map((number, index) => (
