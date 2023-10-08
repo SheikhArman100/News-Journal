@@ -31,7 +31,7 @@ const Headline = async () => {
   const headline = await getHeadline();
   const minutes = getRandomNumber();
 
-  //console.log(headline);
+//  console.log(headline[0]);
 
   return (
     <div className="mt-4 flex flex-col">
@@ -49,7 +49,7 @@ const Headline = async () => {
             alt="Headline cover"
             src={headline[0].image}
             sizes="(min-width: 1520px) 1376px, 91vw"
-            priority
+        
           />
         </div>
         <div className="mt-2 flex items-center justify-between px-1">
