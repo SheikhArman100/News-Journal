@@ -51,7 +51,7 @@ const Headline = async () => {
             src={headline[0].image}
             sizes="(min-width: 1520px) 1376px, 91vw"
             fill
-            className={twMerge("object-fit w-full h-full", className)}
+            className="object-fit w-full h-full"
             placeholder="blur"
             priority
           />
